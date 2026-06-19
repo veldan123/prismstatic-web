@@ -286,7 +286,7 @@ footer{padding:50px 40px;border-top:1px solid var(--border);text-align:center;co
   <ul class="nav-links">
     <li><a href="#features">Features</a></li>
     <li><a href="#how">How It Works</a></li>
-    <li><a href="#" id="hist-nav-btn" class="cta">My Consultations</a></li>
+    <li><a href="#" id="hist-nav-btn" class="cta" onclick="openHistory();return false;">My Consultations</a></li>
   </ul>
 </nav>
 
@@ -363,9 +363,9 @@ footer{padding:50px 40px;border-top:1px solid var(--border);text-align:center;co
         <div class="cin-area">
           <div class="cin-row">
             <textarea class="cin" id="cin" placeholder="e.g. 'Is it legal to prank someone in Singapore?' or 'My employer fired me without notice in the UK'" rows="1"></textarea>
-            <button class="sbtn" id="send-btn"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+            <button class="sbtn" id="send-btn" onclick="sendMsg()"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
           </div>
-          <div class="cact"><button class="bc-btn" id="build-btn">⚖️ Build My Case</button></div>
+          <div class="cact"><button class="bc-btn" id="build-btn" onclick="openPanel()">⚖️ Build My Case</button></div>
         </div>
       </div>
     </div>
@@ -379,9 +379,9 @@ footer{padding:50px 40px;border-top:1px solid var(--border);text-align:center;co
   <p style="margin-top:14px;color:rgba(148,163,184,.3);">© 2025 Cortex Law AI · Built with Pure Intelligence</p>
 </footer>
 
-<div id="panel-ov"></div>
+<div id="panel-ov" onclick="closePanel()"></div>
 <div id="cpanel">
-  <div class="ph"><div class="pt">⚖️ Build My Case</div><button class="pcls" id="close-panel-btn">✕</button></div>
+  <div class="ph"><div class="pt">⚖️ Build My Case</div><button class="pcls" id="close-panel-btn" onclick="closePanel()">✕</button></div>
   <div class="pb" id="panel-body"></div>
 </div>
 <div id="toast">✓ Copied to clipboard!</div>
@@ -391,8 +391,8 @@ footer{padding:50px 40px;border-top:1px solid var(--border);text-align:center;co
   <div class="hp-header">
     <div class="hp-title">⚖️ My Consultations</div>
     <div class="hp-actions">
-      <button class="hp-new" id="hp-new-btn">＋ New Consultation</button>
-      <button class="hp-close" id="hp-close-btn">✕</button>
+      <button class="hp-new" id="hp-new-btn" onclick="startNewConsultation()">＋ New Consultation</button>
+      <button class="hp-close" id="hp-close-btn" onclick="closeHistory()">✕</button>
     </div>
   </div>
   <div class="hp-body" id="hp-body">
@@ -407,7 +407,7 @@ footer{padding:50px 40px;border-top:1px solid var(--border);text-align:center;co
 <!-- CONSULTATION VIEWER -->
 <div id="cons-viewer">
   <div class="cv-header">
-    <button class="cv-back" id="cv-back-btn">←</button>
+    <button class="cv-back" id="cv-back-btn" onclick="closeViewer()">←</button>
     <div class="cv-info">
       <div class="cv-title" id="cv-title">Consultation</div>
       <div class="cv-sub" id="cv-sub"></div>
@@ -417,6 +417,13 @@ footer{padding:50px 40px;border-top:1px solid var(--border);text-align:center;co
 </div>
 
 <script>
+// ─── GLOBAL ERROR CATCHER ────────────────────────────────────────────────────
+window.onerror = function(msg, src, line, col, err) {
+  var d = document.createElement('div');
+  d.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#c00;color:#fff;padding:10px 14px;z-index:99999;font-size:13px;font-family:monospace;';
+  d.textContent = '⚠ JS Error: ' + msg + ' (line ' + line + ')';
+  document.body.appendChild(d);
+};
 // ─── PARTICLES ───────────────────────────────────────────────────────────────
 const C=document.getElementById('pc'),X=C.getContext('2d');
 let PS=[];
