@@ -950,20 +950,29 @@ const KB = {
     },
   },
 
-  // Topic keyword patterns
+  // Topic keyword patterns — expanded
   topicMap: [
-    {topic:'prank', kw:['prank','joke','troll','trick','scare','hoax','gag','stunt','prank call']},
-    {topic:'defamation', kw:['defamation','defame','slander','libel','reputation','false statement about']},
-    {topic:'contract', kw:['contract','agreement','breach','signed','terms','deal','violated the agreement','broke our deal']},
-    {topic:'negligence', kw:['negligence','negligent','duty of care','careless','accident caused by','injured because of','fault']},
-    {topic:'harassment', kw:['harassment','harass','stalking','bully','threaten','intimidate','follow me','follow her','follow him']},
-    {topic:'employment', kw:['fired','dismissed','sacked','let go','employment','employer','workplace','wrongful','redundancy','redundant','job','boss','salary','wage','hours','leave','termination']},
-    {topic:'traffic', kw:['speeding','road accident','traffic','driving','drunk driving','red light','lane','hit and run']},
-    {topic:'drugs', kw:['drug','drugs','marijuana','cannabis','cocaine','heroin','narcotics','substance']},
-    {topic:'consumer', kw:['refund','defective','broken','product','consumer','goods','warranty','purchase','bought','return']},
-    {topic:'cybercrime', kw:['hacked','hack','cybercrime','computer','data breach','phishing','online fraud','unauthorised access']},
-    {topic:'defamation', kw:['said something false','posted lies','wrote about me']},
-    {topic:'selfDefense', kw:['self defense','self-defense','self defence','fight back','attacked','assault','protect myself']},
+    {topic:'prank', kw:['prank','troll','trick someone','scare prank','hoax','gag','prank call','wind up','fake emergency','humiliate as joke','embarrass on purpose']},
+    {topic:'defamation', kw:['defamation','defame','slander','libel','reputation','false statement','lies about me','rumors about me','rumours about me','spreading rumors','spreading lies','posting lies','talking bad about','wrote false things','said something false','untrue about me','damaged my reputation']},
+    {topic:'contract', kw:['contract','agreement','breach','signed','deal','violated','didn\'t pay','not paying','owe me money','money owed','verbal agreement','failed to deliver','supplier','client owes','invoice unpaid','not honouring','broke promise','refusal to pay','written agreement','they breached']},
+    {topic:'negligence', kw:['negligence','negligent','duty of care','careless','accident caused by','injured because','medical mistake','malpractice','slip and fall','product injury','hospital mistake','doctor mistake','pharmacist error','unsafe product','structural defect','fell at','hurt by']},
+    {topic:'harassment', kw:['harassment','harass','stalking','stalker','bully','bullying','threaten me','intimidate','following me','won\'t leave me alone','unwanted messages','repeated contact','sexual harassment','hostile work environment','online threats','threatening messages','cyberbullying','abuse at work','keeps calling me','keeps texting me']},
+    {topic:'employment', kw:['fired','dismissed','sacked','let go','wrongful dismissal','redundancy','redundant','job terminated','employment','employer','workplace','boss','salary unpaid','wage','working hours','annual leave','notice period','constructive dismissal','discrimination at work','unfair dismissal','resign forced','performance improvement plan','disciplinary action','labour dispute','not paid','didn\'t receive salary','pay cut without consent']},
+    {topic:'traffic', kw:['speeding','road accident','car accident','car crash','traffic offence','drunk driving','drink driving','dui','dwi','red light','reckless driving','hit and run','licence suspended','license suspended','careless driving','road rage','breathalyzer','no insurance','driving without licence','speeding ticket','parking fine','vehicle collision']},
+    {topic:'drugs', kw:['drug','drugs','marijuana','cannabis','weed','cocaine','heroin','narcotics','controlled substance','mdma','ecstasy','meth','amphetamine','drug possession','drug trafficking','caught with drugs','illegal substances']},
+    {topic:'consumer', kw:['refund','defective product','broken product','goods','warranty','purchase','bought','return goods','faulty','product doesn\'t work','false advertising','misleading ad','overcharged','counterfeit','fake product','consumer rights','not as described','reject goods']},
+    {topic:'cybercrime', kw:['hacked','hack','cybercrime','data breach','phishing','online fraud','unauthorized access','ransomware','identity theft','account stolen','scammed online','internet fraud','email scam','catfished','doxxing','cyber attack','my data was leaked']},
+    {topic:'selfDefense', kw:['self defense','self-defense','self defence','fight back','attacked first','protect myself','used force','hit in self defence','stand your ground','castle doctrine','grabbed me','threatened with weapon','is it legal to fight back']},
+    {topic:'landlord', kw:['landlord','tenant','rent','eviction','evicted','deposit','security deposit','housing','apartment','flat','lease','tenancy','kicked out of house','rent increase','rental agreement','notice to quit','subletting','repairs not done','landlord refusing','habitability','mould','utilities cut']},
+    {topic:'divorce', kw:['divorce','separation','custody','child support','alimony','maintenance payment','matrimonial','spouse','marriage breakdown','separated','split with partner','ex wife','ex husband','division of assets','property settlement','marital home','prenup','annulment','child access','visitation rights']},
+    {topic:'theft', kw:['steal','stolen','theft','robbery','mugged','shoplifting','burglary','break in','pickpocket','stole from me','robbed','house broken into','car stolen','my belongings taken','larceny']},
+    {topic:'assault', kw:['assaulted','hit me','beat me up','physically attacked','punched me','kicked me','slapped','battery','someone attacked me','physically hurt','bashed','punched in','attack on me']},
+    {topic:'fraud', kw:['fraud','scammed','cheated me','deceived','impersonation','forgery','fake documents','misrepresented','identity fraud','tricked me','lied to get money','investment scam','ponzi','pyramid scheme','fake receipt','forged signature','financial deception']},
+    {topic:'privacy', kw:['privacy','surveillance','spying on me','being monitored','recording without consent','wiretapping','tracking me without','cctv of me','filmed without consent','photographed without','personal data misuse','phone tapped','email accessed','location tracked','spy app']},
+    {topic:'copyright', kw:['copyright','trademark','patent','intellectual property','plagiarism','copied my work','stole my content','using my photo','royalties','infringement','my design stolen','creative work stolen','music stolen','my art','my writing']},
+    {topic:'immigration', kw:['visa','immigration','work permit','deportation','citizenship','passport','permanent residency','pr application','overstayed','visa extension','asylum','refugee status','work visa','student visa','visa rejected','entry ban']},
+    {topic:'family', kw:['domestic violence','family violence','abuse at home','partner abuses me','child abuse','restraining order','avo','family court','child welfare','unsafe home','violence at home','husband hits','wife hits','partner hits','emotional abuse']},
+    {topic:'property', kw:['trespassing','property dispute','land dispute','neighbour dispute','neighbor dispute','boundary fence','squatter','adverse possession','right of way','easement','vandalism','damage to my property','graffiti','encroachment','land title']},
   ],
 
   // Claim elements for Build My Case
@@ -1016,7 +1025,6 @@ const AI = {
   detectCountry(text) {
     const t = text.toLowerCase();
     for (const [alias, code] of Object.entries(KB.aliases)) {
-      // word boundary check
       const re = new RegExp(`\\b${alias.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}\\b`,'i');
       if (re.test(t)) return code;
     }
@@ -1031,7 +1039,79 @@ const AI = {
     return null;
   },
 
+  handleUnknown(input) {
+    const t = input.toLowerCase();
+    if (/sue|lawsuit|legal action|take to court|file a claim|claim against/i.test(t)) {
+      return {type:'text', text:`It sounds like you want to take legal action. To give you accurate advice, I need a few details:<br><br><b>1.</b> What happened? (describe the facts)<br><b>2.</b> Who are you suing or dealing with?<br><b>3.</b> What country is this in?<br><b>4.</b> What outcome do you want — compensation, a court order, criminal charges?<br><br>Give me those details and I'll analyse the law, your claim elements, and your options.`};
+    }
+    if (/arrest|police|charged|convicted|criminal|jail|prison|bail|sentence/i.test(t)) {
+      return {type:'text', text:`It sounds like you have a <b>criminal law</b> matter. Please tell me:<br><br>• What are you charged with (or what crime was committed against you)?<br>• Which country is this in?<br>• Are you the accused, the victim, or asking generally?<br><br>I cover criminal law including theft, assault, fraud, drugs, cybercrime, and more.`};
+    }
+    if (/money|payment|debt|owe|loan|borrow|paid/i.test(t)) {
+      return {type:'text', text:`It sounds like you have a <b>financial or contract dispute</b>. Tell me more:<br><br>• Who owes money, and how much?<br>• Was there a written contract, verbal agreement, or loan?<br>• Which country is this in?<br><br>This could be a contract breach, debt recovery, or consumer rights issue — I can advise once I have more detail.`};
+    }
+    if (/accident|injur|hurt|hospital|medical|doctor|surgery|treatment/i.test(t)) {
+      return {type:'text', text:`It sounds like a <b>personal injury or medical negligence</b> matter. Please describe:<br><br>• What happened and how were you injured?<br>• Who caused the injury (another driver, a doctor, a business)?<br>• Which country is this in?<br><br>You may have a negligence claim — I can walk you through the elements and your options.`};
+    }
+    if (/online|internet|social media|post|website|email|message|text|chat/i.test(t)) {
+      return {type:'text', text:`It sounds like an <b>online legal matter</b>. This could be defamation, cybercrime, harassment, privacy, or copyright depending on what happened. Tell me:<br><br>• What exactly was posted/done online?<br>• Who did it?<br>• What country are you in?<br><br>I cover defamation, online harassment, cybercrime, data privacy, and copyright infringement.`};
+    }
+    if (/child|parent|family|spouse|partner|marriage|wife|husband|kid/i.test(t)) {
+      return {type:'text', text:`It sounds like a <b>family law</b> matter. I can help with:<br><br>• Divorce and separation<br>• Child custody and support<br>• Domestic violence and protection orders<br>• Maintenance/alimony<br><br>Which country are you in, and what is your specific situation?`};
+    }
+    if (/house|home|property|land|building|apartment|flat|room/i.test(t)) {
+      return {type:'text', text:`It sounds like a <b>property or housing matter</b>. I can help with:<br><br>• Landlord and tenant disputes (deposits, eviction, repairs)<br>• Property ownership and boundary disputes<br>• Trespassing and vandalism<br>• Real estate contracts<br><br>Tell me more about the situation and your country.`};
+    }
+    return {type:'text', text:`I'm here to help with any legal question. Just describe your situation in plain English — you don't need to use legal terms.<br><br>For example:<br>• <i>"My employer fired me without warning in Singapore"</i><br>• <i>"My landlord kept my deposit and won't return it"</i><br>• <i>"Someone posted lies about me on social media"</i><br>• <i>"I was physically attacked and want to press charges"</i><br>• <i>"A company scammed me out of money"</i><br><br>Include <b>what happened</b>, <b>your country</b>, and <b>what you want to achieve</b> — I'll give you the relevant laws and your legal options.`};
+  },
+
+  getGeneralAnswer(topic) {
+    const G = {
+      employment: `<b>Employment Law — Your Key Rights:</b><br>• <b>Notice Period:</b> Employers must give written notice before termination. Length depends on your service duration (typically 1 week to 3 months).<br>• <b>Wrongful Dismissal:</b> Dismissal without proper notice OR without a valid reason (misconduct, redundancy, poor performance through fair process) may be unlawful.<br>• <b>Anti-Discrimination:</b> Dismissal based on race, sex, religion, disability, pregnancy, or age is unlawful virtually everywhere.<br>• <b>Unpaid Wages:</b> Your employer must pay all wages earned — including notice pay, holiday pay, and any bonus contractually owed.<br>• <b>What to do:</b> Collect your contract, payslips, and all written communications. Write to your employer formally. File a complaint with your country's Labour Tribunal or Employment Authority if unresolved.`,
+      landlord: `<b>Landlord & Tenant — Your Key Rights:</b><br>• <b>Security Deposit:</b> Must be returned after tenancy ends minus documented damage (not fair wear and tear). Most laws set a deadline of 14–30 days.<br>• <b>Eviction:</b> Landlords cannot remove you without proper written notice and in many places a court order. Minimum notice is typically 4–12 weeks.<br>• <b>Unlawful Eviction:</b> Changing locks, cutting utilities, or removing your belongings without a court order is <b>illegal everywhere</b> — a criminal offence in many countries.<br>• <b>Repairs:</b> Landlords must maintain the property in a habitable condition. Failure to do so can entitle you to rent reduction or lease termination.<br>• <b>Entry:</b> Landlord must give 24–48 hours notice before entering (except genuine emergency).<br>• <b>What to do:</b> Put all complaints in writing. Photograph all issues. Contact your local Tenancy Tribunal or Housing Authority.`,
+      defamation: `<b>Defamation — What the Law Says:</b><br>• Defamation is a <b>false statement of fact</b> (not opinion) that damages your reputation, communicated to at least one third party.<br>• <b>Online posts, social media, and messages</b> all count as publication — often as the more serious "libel" form.<br>• <b>Defences</b> available to the publisher: Truth (absolute defence), Fair Comment/Honest Opinion, Privilege.<br>• <b>Remedies:</b> Damages (financial compensation), formal apology/retraction, injunction to remove the content.<br>• <b>What to do:</b> Screenshot and archive everything immediately. Do not engage publicly. Send a formal cease-and-desist letter. Consult a lawyer.`,
+      contract: `<b>Contract Law — The Essentials:</b><br>• A binding contract requires: <b>Offer + Acceptance + Consideration (value exchanged) + Intention to be legally bound.</b><br>• <b>Verbal contracts are legally binding</b> in most countries — but harder to prove. Written contracts are always better.<br>• <b>Breach of contract</b> = a party fails to perform without lawful excuse. Remedies: damages (compensating your loss), specific performance (court order to perform), or rescission (cancellation).<br>• <b>What to do:</b> Gather all evidence (emails, messages, invoices, receipts, screenshots). Send a formal written demand. File in small claims or civil court if ignored.`,
+      harassment: `<b>Harassment — What the Law Protects You From:</b><br>• A pattern of unwanted behaviour (calls, messages, following, threats) causing fear, alarm, or distress. As few as <b>2 incidents</b> can constitute unlawful harassment in many jurisdictions.<br>• <b>Online harassment:</b> Threats, persistent abuse, doxxing (publishing private information), and cyberstalking are criminal offences in most countries.<br>• <b>Sexual harassment:</b> Any unwanted sexual conduct at work or in public is unlawful. Employers can be liable for failing to act.<br>• <b>Remedies:</b> Police report, Protection Order/Restraining Order from court, and civil damages.<br>• <b>What to do:</b> Document every incident. Screenshot all digital evidence. Report to police and apply for a Protection Order.`,
+      negligence: `<b>Negligence — The 4 Things You Must Prove:</b><br><b>1. Duty of Care</b> — the defendant owed you a legal duty (doctors owe patients; drivers owe pedestrians; employers owe employees).<br><b>2. Breach</b> — they fell below the standard of a reasonable person in that role.<br><b>3. Causation</b> — their breach <i>directly caused</i> your harm ("but for" their negligence, you would not have been hurt).<br><b>4. Damage</b> — you suffered actual, quantifiable loss (medical bills, lost income, pain &amp; suffering).<br><br><b>Remedies:</b> Compensatory damages covering all your losses. Some jurisdictions allow punitive damages for gross negligence.`,
+      theft: `<b>Theft &amp; Robbery — What You Should Know:</b><br>• <b>Theft:</b> Dishonestly taking another person's property with intent to permanently deprive them of it. Report to police immediately.<br>• <b>Robbery:</b> Theft with force or threat of force — much more serious criminal charge.<br>• <b>Burglary:</b> Unlawful entry into premises to commit theft or another offence.<br>• <b>If you are the victim:</b> Call police. Note exactly what was taken (description, value). Preserve any CCTV or witness evidence. File report for insurance purposes. Do NOT confront the suspect.<br>• <b>If you are accused:</b> Exercise your right to silence. Do not speak to police without a lawyer.`,
+      assault: `<b>Assault &amp; Battery — Your Legal Position:</b><br>• <b>Assault (criminal):</b> Making someone fear imminent physical harm — even without touching them.<br>• <b>Battery:</b> Actual unlawful physical contact — punching, kicking, pushing, or any unwanted touching.<br>• <b>If you are the victim:</b> Call police. Seek medical attention immediately (medical records are your most important evidence). Photograph all injuries. Get witness names. Apply for a Protection Order if ongoing threat.<br>• <b>Civil claim:</b> You can sue the attacker for compensation (medical costs, loss of earnings, psychological harm) in addition to criminal charges.<br>• <b>Self-defence:</b> Using proportionate force to protect yourself from immediate attack is a legal defence — but force must match the threat.`,
+      fraud: `<b>Fraud &amp; Scams — Legal Analysis:</b><br>• Fraud = dishonest deception causing you financial loss. Common types: investment fraud, online scams, impersonation, fake contracts, identity theft.<br>• <b>Civil claim (Fraudulent Misrepresentation):</b> Prove (1) a false statement was made knowingly; (2) you relied on it; (3) you suffered loss.<br>• <b>Criminal report:</b> Report to police AND your country's fraud authority (FBI IC3 in USA, Action Fraud in UK, police in Singapore). This is usually a serious criminal offence.<br>• <b>What to do immediately:</b> Preserve ALL evidence (emails, screenshots, bank records, chat logs). Do not send more money. Contact your bank to attempt reversal. File a police report.`,
+      divorce: `<b>Divorce &amp; Separation — Key Legal Principles:</b><br>• Most modern countries use <b>"no-fault" divorce</b> — no need to prove wrongdoing, just irretrievable breakdown of marriage.<br>• <b>Division of assets:</b> Matrimonial assets (home, savings, investments built during marriage) are divided — typically 50/50 or based on contributions. Pre-marital assets may be excluded.<br>• <b>Child custody:</b> Courts focus on the <b>"best interests of the child."</b> Joint custody is increasingly standard. The primary caregiver typically has day-to-day care.<br>• <b>Maintenance:</b> A financially weaker spouse may claim maintenance. Duration and amount depend on length of marriage, income gap, and contributions.<br>• <b>What to do:</b> Consult a family lawyer. Document all shared assets. Do not move money without legal advice. If domestic violence is involved, get a protection order first.`,
+      drugs: `<b>Drug Laws — General Warning:</b><br>• Drug laws vary <b>dramatically</b> between countries. What is legal in one place (cannabis in some US states) can carry the <b>death penalty</b> in another (Singapore, Malaysia, UAE for trafficking).<br>• <b>Possession:</b> Criminalised in most countries — penalties range from fines to decades in prison depending on the drug and quantity.<br>• <b>Trafficking:</b> Carrying or distributing drugs above threshold amounts is treated as trafficking everywhere — a very serious felony.<br>⚠️ <b>If travelling:</b> NEVER carry any substance you are not 100% certain is legal at your destination. Drug laws apply to tourists equally.`,
+      consumer: `<b>Consumer Rights — What You Are Entitled To:</b><br>• Goods must be of <b>satisfactory quality, fit for purpose, and match their description.</b> If not, you are entitled to a repair, replacement, or refund.<br>• <b>Time limits:</b> Most jurisdictions give 30–60 days for a full refund. You may still claim repair/replacement within the warranty period (typically 1–2 years).<br>• <b>Services:</b> Must be performed with reasonable care and skill. If not, you can claim partial refund or require the work to be redone.<br>• <b>False advertising:</b> A seller cannot make claims about products they know to be untrue. This is both a civil wrong and a criminal offence in many countries.<br>• <b>What to do:</b> Keep all receipts. Complain in writing to the seller first. If no resolution, escalate to your country's Consumer Protection Agency or file in Small Claims Court.`,
+      cybercrime: `<b>Cybercrime — Legal Framework:</b><br>• <b>Hacking (unauthorised access):</b> A serious criminal offence in virtually all countries — even "just looking" without permission can mean prosecution.<br>• <b>Data breach:</b> If a company leaked your data through negligence, you have a civil claim AND they likely violated data protection law — report to the Data Protection Authority.<br>• <b>Online scam/fraud:</b> Report to your national cybercrime unit (FBI IC3 — USA; Action Fraud — UK; Singapore Police Force; ACSC — Australia).<br>• <b>Identity theft:</b> Contact your bank immediately. File a police report. Alert credit bureaus to flag your profile.<br>• <b>Cyberbullying/online abuse:</b> Criminal offence in most modern jurisdictions — screenshots are your evidence.`,
+      selfDefense: `<b>Self-Defence — When Is Force Legal?</b><br>• Self-defence justifies using force to protect yourself from <b>immediate, unlawful harm</b> — but the force must be <b>proportionate</b>.<br>• <b>Key conditions:</b> (1) You genuinely believed you were under threat; (2) The threat was imminent; (3) Your response was proportionate.<br>• <b>Duty to retreat:</b> Required in some countries (UK, some US states) — you must attempt to escape first if safe to do so. Many US states have "Stand Your Ground" — no duty to retreat.<br>• <b>Deadly force</b> is only legally justified against a threat of death or serious bodily harm.<br>• <b>If you used force in self-defence:</b> Do not speak to police without a lawyer. Self-defence must be argued with evidence of the threat.`,
+      privacy: `<b>Privacy Law — What Protects You:</b><br>• <b>Recording calls:</b> Laws vary — "one-party consent" countries (UK, Australia, many US states) allow you to record your own calls. "All-party consent" states/countries require everyone's agreement.<br>• <b>CCTV:</b> Filming in public is generally legal. Filming in private spaces (bathrooms, bedrooms) without consent is a serious criminal offence everywhere.<br>• <b>Data protection:</b> Companies must have lawful basis to use your personal data, must keep it secure, and must allow you to access or delete it. Violations carry heavy fines.<br>• <b>Workplace monitoring:</b> Employers may monitor company devices but must notify employees. Secret surveillance of private communications is typically unlawful.<br>• <b>If your privacy was violated:</b> Collect evidence. Report to your country's Data Protection Authority. Consider a civil claim.`,
+      copyright: `<b>Copyright &amp; Intellectual Property — Your Rights:</b><br>• <b>Copyright arises automatically</b> when you create an original work — writing, music, art, code, photographs. No registration needed in most countries.<br>• <b>What it protects:</b> Others cannot copy, distribute, or create derivative works from your content without permission.<br>• <b>Duration:</b> Typically your lifetime plus 50–70 years.<br>• <b>Fair use/Fair dealing:</b> Limited use for education, criticism, news, or parody is permitted without your consent.<br>• <b>If your work was stolen:</b> Document the infringement (screenshots, dates). Send a formal cease-and-desist letter. File a DMCA takedown if online. Consult an IP lawyer about a damages claim.`,
+      immigration: `<b>Immigration Law — Key Points:</b><br>• <b>Overstaying a visa</b> is a serious offence — can result in detention, deportation, and multi-year entry bans.<br>• <b>Working without a permit</b> is illegal in most countries and affects both worker and employer.<br>• <b>Deportation</b> usually involves a formal legal process with a right to appeal — though this varies by country.<br>• <b>Asylum/Refugee:</b> Under the 1951 Refugee Convention, you have the right to claim asylum if fleeing genuine persecution. Apply immediately on arrival.<br>• <b>What to do:</b> Consult an immigration lawyer immediately — immigration issues are highly technical and time-sensitive.`,
+      family: `<b>Domestic Violence &amp; Family Protection:</b><br>• Domestic violence — physical, emotional, financial, or sexual abuse within a relationship — is a <b>crime in every country.</b><br>• <b>Protection Orders:</b> Courts can prohibit an abuser from contacting or approaching you. In most countries emergency orders can be granted within 24–48 hours.<br>• <b>Child protection:</b> If a child is at risk, welfare authorities have powers to intervene. If you suspect abuse, report it.<br>• <b>If you are in immediate danger:</b> Call emergency services (999/911/000/112). Reach a safe location first. Contact domestic violence support organisations in your country.`,
+      property: `<b>Property Law — Key Principles:</b><br>• <b>Trespassing:</b> Entering another's land without permission. Criminal trespass (with intent) is more serious than civil trespass.<br>• <b>Adverse possession (Squatters' Rights):</b> Continuous, open, exclusive possession of land for a statutory period (10–20 years depending on country) can establish legal title.<br>• <b>Neighbour disputes:</b> Boundary disputes are civil matters. Noise, nuisance, overhanging trees, and blocked light are actionable as private nuisance.<br>• <b>Vandalism:</b> Criminal offence — report to police with photos and repair cost estimate.<br>• <b>What to do:</b> For boundary disputes — get a land survey. For nuisance — send written notice. For trespass — court injunction is available.`,
+      prank: `<b>Prank Law — When Jokes Become Illegal:</b><br>• A prank is <b>generally legal</b> only if: all parties consent, no fear or genuine alarm is caused, and it occurs in private without property damage.<br>• <b>Where pranks cross the line into criminal territory:</b><br>&nbsp;— Causing someone genuine fear of harm (assault)<br>&nbsp;— Calling emergency services (false report — serious criminal offence everywhere)<br>&nbsp;— Recording and publishing without consent<br>&nbsp;— Online humiliation causing distress (harassment/cyberbullying laws)<br>&nbsp;— Any physical contact without consent (battery)<br>• The fact it was "just a joke" is <b>not a defence</b> if the victim suffered real fear, harm, or humiliation.`,
+    };
+    return G[topic] || `I can help with <b>${topic.replace(/_/g,' ')}</b> questions. Please describe your specific situation in more detail — including what happened and your country — and I will give you the applicable laws and your legal options.`;
+  },
+
   respond(input) {
+    const raw = input.trim();
+
+    // Greetings
+    if (/^(hi\b|hello|hey\b|greetings|good morning|good evening|howdy|yo\b|sup\b)/i.test(raw)) {
+      return {type:'text', text:`Welcome to <b>Cortex Law AI</b> — your personal legal intelligence system.<br><br>I can advise on:<br>• <b>Employment</b> — wrongful dismissal, unpaid wages, workplace rights<br>• <b>Contracts</b> — breach, non-payment, enforcement<br>• <b>Defamation</b> — slander, libel, false online posts<br>• <b>Harassment &amp; Stalking</b> — protection orders, cyberbullying<br>• <b>Criminal Law</b> — theft, assault, drugs, fraud<br>• <b>Family Law</b> — divorce, custody, domestic violence<br>• <b>Landlord &amp; Tenant</b> — deposits, eviction, repairs<br>• <b>Consumer Rights</b> — refunds, faulty goods, scams<br>• <b>Privacy &amp; Cybercrime</b><br><br>Across: <b>🇸🇬 Singapore · 🇺🇸 US · 🇬🇧 UK · 🇦🇺 Australia · 🇲🇾 Malaysia · 🇨🇦 Canada · 🇮🇳 India · 🇦🇪 UAE</b> and more.<br><br>Just describe your situation in plain English — I'll handle the legal analysis.`};
+    }
+
+    // Acknowledgments — don't ask for more detail, just encourage
+    if (/^(thanks?\.?|thank you\.?|okay\.?|ok\b\.?|got it\.?|understood\.?|alright\.?|i see\.?|noted\.?|perfect\.?|great\.?)$/i.test(raw)) {
+      return {type:'text', text:`You're welcome. Feel free to ask anything else. If you've described your situation fully, click <b>⚖️ Build My Case</b> for a complete legal strategy document.`};
+    }
+
+    // Short yes/no — give guidance using existing context
+    if (/^(yes\.?|yeah\.?|yep\.?|no\.?|nope\.?)$/i.test(raw)) {
+      if (this.ctx.topic) {
+        return {type:'text', text:`Could you give me more detail about your <b>${this.ctx.topic.replace(/_/g,' ')}</b> situation? The more specific you are — dates, what was said, what was done — the better my legal analysis will be.`};
+      }
+      return {type:'text', text:`Could you describe your situation in a bit more detail? What happened, and what country are you in?`};
+    }
+
     const country = this.detectCountry(input);
     const topic = this.detectTopic(input);
     if (country) this.ctx.country = country;
@@ -1040,32 +1120,33 @@ const AI = {
     const c = this.ctx.country;
     const tp = this.ctx.topic;
 
-    // Greetings
-    if (/^(hi|hello|hey|greetings|good morning|good evening|howdy)/i.test(input.trim())) {
-      return {type:'text', text:`Welcome. I am Cortex Law AI, your personal legal intelligence. I can answer questions about law in Singapore, the United States, United Kingdom, Australia, Malaysia, Canada, India, the UAE, and more.\n\nSimply describe your legal situation or ask a specific question — for example: "Is it legal to prank someone in Singapore?" or "My employer fired me without notice in the UK — what are my rights?"\n\nFor best results, mention your country and the nature of your legal issue.`};
-    }
-
-    // No topic yet
+    // No topic — try to help with what we can detect
     if (!tp) {
-      return {type:'text', text:`I need a little more detail to assist you accurately.\n\nCould you describe the legal situation you\'re facing? For example:\n• "Is it legal to record a phone call in Australia?"\n• "My landlord refuses to return my deposit in Canada"\n• "I was wrongfully dismissed from my job in Singapore"\n• "Someone posted false things about me online in the UK"\n\nAlso please mention your country so I can apply the correct jurisdiction's laws.`};
+      return this.handleUnknown(input);
     }
 
-    // Topic detected but no country
+    // Have topic but no country — give general answer immediately AND ask for country
     if (tp && !c) {
       const topicLabel = tp.replace(/_/g,' ');
-      return {type:'clarify', text:`I can see your question is about <b>${topicLabel}</b> — I need to know your country to give you the correct legal answer, as laws vary significantly between jurisdictions.\n\nWhich country are you in or asking about? (e.g., Singapore, United States, United Kingdom, Australia, Malaysia, Canada, India, UAE, etc.)`};
+      const genInfo = this.getGeneralAnswer(tp);
+      return {type:'text', text:`Here is what the law generally says about <b>${topicLabel}</b>:<br><br>${genInfo}<br><br><div style="margin-top:12px;padding:10px 14px;background:rgba(6,182,212,.08);border-left:3px solid var(--cyan);border-radius:6px;"><b>For jurisdiction-specific laws, statutes, and case law:</b> which country is your question about? (e.g., Singapore, UK, USA, Australia, Malaysia, Canada, India, UAE)</div>`};
     }
 
-    // Country not in KB
+    // Have country — check if we have specific data
     if (!KB.countries[c]) {
-      return {type:'text', text:`I don't have detailed legal data for ${c} yet in my current database. However, I can answer your question using general principles that apply in most common law countries, or you may want to specify one of these jurisdictions I cover fully:\n\n🇸🇬 Singapore · 🇺🇸 United States · 🇬🇧 United Kingdom · 🇦🇺 Australia · 🇲🇾 Malaysia · 🇨🇦 Canada · 🇮🇳 India · 🇦🇪 UAE\n\nWhich would you like?`};
+      // Country not in our detailed KB — give general answer
+      const genInfo = this.getGeneralAnswer(tp);
+      return {type:'text', text:`Here is what the law generally says about <b>${tp.replace(/_/g,' ')}</b> in most countries with similar legal systems:<br><br>${genInfo}<br><br><span style="color:var(--muted);font-size:.78rem;">Note: I have detailed case law and statutes for 🇸🇬 Singapore · 🇺🇸 US · 🇬🇧 UK · 🇦🇺 Australia · 🇲🇾 Malaysia · 🇨🇦 Canada · 🇮🇳 India · 🇦🇪 UAE. For local specifics in your country, consult a qualified lawyer.</span>`};
     }
 
     const cData = KB.countries[c];
     const tData = cData.topics[tp];
 
     if (!tData) {
-      return {type:'text', text:`I have detailed information about ${cData.name} law, but my database doesn't yet include a specific entry for <b>${tp.replace(/_/g,' ')}</b> law in ${cData.name}.\n\nI can help with the following topics for ${cData.name}: ${Object.keys(cData.topics).join(', ')}.\n\nWould you like to ask about one of those, or could you rephrase your question?`};
+      // Country in KB but this topic not specifically stored — give general answer in country context
+      const genInfo = this.getGeneralAnswer(tp);
+      const covered = Object.keys(cData.topics).map(k => k.replace(/_/g,' ')).join(' · ');
+      return {type:'text', text:`<b>${cData.flag} ${cData.name} — ${tp.replace(/_/g,' ')} law:</b><br><br>${genInfo}<br><br><span style="color:var(--muted);font-size:.78rem;">My detailed ${cData.name} database covers: ${covered}. If your question is actually about one of those topics, let me know and I'll give you the specific statutes and case law.</span>`};
     }
 
     return {type:'legal', country: cData, topic: tp, data: tData};
