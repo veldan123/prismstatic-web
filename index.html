@@ -225,6 +225,56 @@ footer{padding:50px 40px;border-top:1px solid var(--border);text-align:center;co
   .rings{display:none;}
   .stats{gap:30px;}
 }
+
+/* HISTORY PAGE */
+#hist-page{position:fixed;inset:0;background:var(--bg);z-index:300;overflow-y:auto;transform:translateX(100%);transition:transform .45s cubic-bezier(.4,0,.2,1);}
+#hist-page.open{transform:translateX(0);}
+#hist-page::-webkit-scrollbar{width:4px;}
+#hist-page::-webkit-scrollbar-thumb{background:var(--border-hi);}
+.hp-header{position:sticky;top:0;background:rgba(3,7,18,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:18px 40px;display:flex;align-items:center;justify-content:space-between;z-index:10;}
+.hp-title{font-size:1.1rem;font-weight:800;background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hp-actions{display:flex;gap:10px;align-items:center;}
+.hp-close{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .2s;}
+.hp-close:hover{background:rgba(239,68,68,.1);color:var(--red);border-color:var(--red);}
+.hp-new{display:flex;align-items:center;gap:6px;padding:8px 18px;background:linear-gradient(135deg,var(--cyan),var(--purple));border:none;border-radius:100px;color:#fff;font-size:.82rem;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+.hp-new:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(6,182,212,.35);}
+.hp-body{max-width:900px;margin:0 auto;padding:40px;}
+.hp-empty{text-align:center;padding:80px 20px;color:var(--muted);}
+.hp-empty-icon{font-size:3rem;margin-bottom:16px;}
+.hp-empty p{margin-bottom:8px;}
+.cons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.cons-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;}
+.cons-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,var(--cyan-d),transparent 70%);pointer-events:none;}
+.cons-card:hover{border-color:var(--border-hi);transform:translateY(-2px);box-shadow:0 8px 24px rgba(6,182,212,.1);}
+.cc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.cc-flag{font-size:1.4rem;}
+.cc-date{font-size:.7rem;color:var(--muted);}
+.cc-title{font-size:.88rem;font-weight:600;line-height:1.4;margin-bottom:8px;color:var(--text);}
+.cc-meta{display:flex;gap:6px;flex-wrap:wrap;}
+.cc-tag{padding:2px 8px;border-radius:100px;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+.cc-tag.cy{background:var(--cyan-d);color:var(--cyan);border:1px solid rgba(6,182,212,.2);}
+.cc-tag.pu{background:var(--purple-d);color:var(--purple);border:1px solid rgba(168,85,247,.2);}
+.cc-msgcount{font-size:.72rem;color:var(--muted);margin-top:8px;}
+
+/* Consultation viewer */
+#cons-viewer{position:fixed;inset:0;background:var(--bg);z-index:400;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);overflow-y:auto;}
+#cons-viewer.open{transform:translateX(0);}
+.cv-header{position:sticky;top:0;background:rgba(3,7,18,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 32px;display:flex;align-items:center;gap:12px;z-index:10;}
+.cv-back{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .2s;flex-shrink:0;}
+.cv-back:hover{background:var(--cyan-d);color:var(--cyan);border-color:var(--cyan);}
+.cv-info{flex:1;}
+.cv-title{font-size:.9rem;font-weight:700;}
+.cv-sub{font-size:.72rem;color:var(--muted);}
+.cv-body{max-width:800px;margin:0 auto;padding:32px 40px;}
+.cv-msgs{display:flex;flex-direction:column;gap:16px;}
+.cv-msg{display:flex;gap:10px;max-width:82%;}
+.cv-msg.u{align-self:flex-end;flex-direction:row-reverse;}
+.cv-mav{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.75rem;}
+.cv-msg.ai .cv-mav{background:linear-gradient(135deg,var(--cyan),var(--purple));}
+.cv-msg.u .cv-mav{background:linear-gradient(135deg,var(--amber),#f97316);}
+.cv-mb{padding:11px 14px;border-radius:14px;font-size:.84rem;line-height:1.65;}
+.cv-msg.ai .cv-mb{background:rgba(6,182,212,.07);border:1px solid rgba(6,182,212,.12);border-bottom-left-radius:4px;}
+.cv-msg.u .cv-mb{background:rgba(245,158,11,.09);border:1px solid rgba(245,158,11,.18);border-bottom-right-radius:4px;}
 </style>
 </head>
 <body>
@@ -236,7 +286,7 @@ footer{padding:50px 40px;border-top:1px solid var(--border);text-align:center;co
   <ul class="nav-links">
     <li><a href="#features">Features</a></li>
     <li><a href="#how">How It Works</a></li>
-    <li><a href="#chat-sec" class="cta">Consult Now</a></li>
+    <li><a href="#" id="hist-nav-btn" class="cta">My Consultations</a></li>
   </ul>
 </nav>
 
@@ -335,6 +385,36 @@ footer{padding:50px 40px;border-top:1px solid var(--border);text-align:center;co
   <div class="pb" id="panel-body"></div>
 </div>
 <div id="toast">✓ Copied to clipboard!</div>
+
+<!-- HISTORY PAGE -->
+<div id="hist-page">
+  <div class="hp-header">
+    <div class="hp-title">⚖️ My Consultations</div>
+    <div class="hp-actions">
+      <button class="hp-new" id="hp-new-btn">＋ New Consultation</button>
+      <button class="hp-close" id="hp-close-btn">✕</button>
+    </div>
+  </div>
+  <div class="hp-body" id="hp-body">
+    <div class="hp-empty">
+      <div class="hp-empty-icon">📂</div>
+      <p style="font-size:.95rem;color:var(--text);margin-bottom:6px;">No consultations yet.</p>
+      <p>Start a conversation with Cortex Law AI — it will be saved here automatically.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONSULTATION VIEWER -->
+<div id="cons-viewer">
+  <div class="cv-header">
+    <button class="cv-back" id="cv-back-btn">←</button>
+    <div class="cv-info">
+      <div class="cv-title" id="cv-title">Consultation</div>
+      <div class="cv-sub" id="cv-sub"></div>
+    </div>
+  </div>
+  <div class="cv-body"><div class="cv-msgs" id="cv-msgs"></div></div>
+</div>
 
 <script>
 // ─── PARTICLES ───────────────────────────────────────────────────────────────
@@ -1124,10 +1204,6 @@ cinEl.addEventListener('input', () => {
   cinEl.style.height = 'auto';
   cinEl.style.height = Math.min(cinEl.scrollHeight, 120) + 'px';
 });
-document.getElementById('send-btn').addEventListener('click', sendMsg);
-document.getElementById('build-btn').addEventListener('click', openPanel);
-document.getElementById('close-panel-btn').addEventListener('click', closePanel);
-document.getElementById('panel-ov').addEventListener('click', closePanel);
 
 // Initial greeting
 setTimeout(() => {
@@ -1384,11 +1460,129 @@ function fallbackCopy(text) {
   showToast();
 }
 
-function showToast() {
+function showToast(msg) {
   const t = document.getElementById('toast');
+  t.textContent = msg || '✓ Copied to clipboard!';
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2500);
 }
+
+// ─── CONSULTATION HISTORY ─────────────────────────────────────────────────────
+const STORE = 'cortex_consultations';
+
+function saveCurrentConsultation() {
+  const allMsgs = document.querySelectorAll('#msgs .msg');
+  if (allMsgs.length === 0) return;
+  const userMsgs = document.querySelectorAll('#msgs .msg.u');
+  if (userMsgs.length === 0) return;
+
+  const title = userMsgs[0].querySelector('.mb').textContent.trim().slice(0, 80);
+  const msgData = Array.from(allMsgs).map(m => ({
+    role: m.classList.contains('u') ? 'user' : 'ai',
+    html: m.querySelector('.mb').innerHTML
+  }));
+
+  const existing = JSON.parse(localStorage.getItem(STORE) || '[]');
+  existing.unshift({
+    id: Date.now(),
+    date: new Date().toISOString(),
+    title: title || 'Legal Consultation',
+    country: AI.ctx.country,
+    topic: AI.ctx.topic,
+    flag: AI.ctx.country && KB.countries[AI.ctx.country] ? KB.countries[AI.ctx.country].flag : '⚖️',
+    msgs: msgData
+  });
+  localStorage.setItem(STORE, JSON.stringify(existing.slice(0, 30)));
+}
+
+function loadConsultations() {
+  return JSON.parse(localStorage.getItem(STORE) || '[]');
+}
+
+function formatDate(iso) {
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'}) +
+    ' · ' + d.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'});
+}
+
+function renderHistory() {
+  const body = document.getElementById('hp-body');
+  const list = loadConsultations();
+  if (list.length === 0) {
+    body.innerHTML = `<div class="hp-empty"><div class="hp-empty-icon">📂</div><p style="font-size:.95rem;color:var(--text);margin-bottom:6px;">No consultations yet.</p><p>Start a conversation with Cortex Law AI — it will be saved here automatically.</p></div>`;
+    return;
+  }
+  body.innerHTML = `<div class="cons-grid">${list.map((c,i) => `
+    <div class="cons-card" data-idx="${i}">
+      <div class="cc-top"><span class="cc-flag">${c.flag || '⚖️'}</span><span class="cc-date">${formatDate(c.date)}</span></div>
+      <div class="cc-title">${c.title}</div>
+      <div class="cc-meta">
+        ${c.country ? `<span class="cc-tag cy">${(KB.countries[c.country]||{name:c.country}).name}</span>` : ''}
+        ${c.topic ? `<span class="cc-tag pu">${c.topic.replace(/_/g,' ')}</span>` : ''}
+      </div>
+      <div class="cc-msgcount">${c.msgs.length} message${c.msgs.length!==1?'s':''}</div>
+    </div>`).join('')}</div>`;
+
+  body.querySelectorAll('.cons-card').forEach(card => {
+    card.addEventListener('click', () => viewConsultation(list[+card.dataset.idx]));
+  });
+}
+
+function openHistory() {
+  saveCurrentConsultation();
+  renderHistory();
+  document.getElementById('hist-page').classList.add('open');
+}
+
+function closeHistory() {
+  document.getElementById('hist-page').classList.remove('open');
+}
+
+function viewConsultation(c) {
+  document.getElementById('cv-title').textContent = c.title;
+  document.getElementById('cv-sub').textContent = formatDate(c.date) + (c.country && KB.countries[c.country] ? ' · ' + KB.countries[c.country].name : '');
+  const msgsEl = document.getElementById('cv-msgs');
+  msgsEl.innerHTML = c.msgs.map(m => `
+    <div class="cv-msg ${m.role}">
+      <div class="cv-mav">${m.role === 'ai' ? '⚖️' : '👤'}</div>
+      <div class="cv-mb">${m.html}</div>
+    </div>`).join('');
+  document.getElementById('cons-viewer').classList.add('open');
+}
+
+function closeViewer() {
+  document.getElementById('cons-viewer').classList.remove('open');
+}
+
+function startNewConsultation() {
+  saveCurrentConsultation();
+  // Reset chat
+  document.getElementById('msgs').innerHTML = '';
+  AI.ctx = {country: null, topic: null, msgs: []};
+  closeHistory();
+  // Scroll to chat
+  document.getElementById('chat-sec').scrollIntoView({behavior:'smooth'});
+  // Fresh greeting
+  setTimeout(() => {
+    addMsg('ai', `New consultation started. I am <b>Cortex Law AI</b> — ready to assist.<br><br>Ask your legal question and mention your country for jurisdiction-specific answers.`);
+  }, 300);
+  showToast('✓ New consultation started');
+}
+
+// ─── WIRE UP ALL BUTTONS (safe DOMContentLoaded) ─────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('send-btn').addEventListener('click', sendMsg);
+  document.getElementById('build-btn').addEventListener('click', openPanel);
+  document.getElementById('close-panel-btn').addEventListener('click', closePanel);
+  document.getElementById('panel-ov').addEventListener('click', closePanel);
+  document.getElementById('hist-nav-btn').addEventListener('click', e => { e.preventDefault(); openHistory(); });
+  document.getElementById('hp-close-btn').addEventListener('click', closeHistory);
+  document.getElementById('hp-new-btn').addEventListener('click', startNewConsultation);
+  document.getElementById('cv-back-btn').addEventListener('click', closeViewer);
+});
+
+// Auto-save when user leaves the page
+window.addEventListener('beforeunload', saveCurrentConsultation);
 </script>
 </body>
 </html>
